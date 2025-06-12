@@ -37,6 +37,7 @@ return {
 	require('plugins.win-picker'),
 	require('plugins.clangd-extensions'),
 	require('plugins.terminal'),
+	require('plugins.lazygit'),
 	-- require('plugins.rocks'),
 	require('plugins.pio')
 	-- require('plugins.image')
