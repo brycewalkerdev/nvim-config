@@ -9,30 +9,83 @@
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  lazy = true,
   -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
+    -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
 
     -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    -- 'leoluz/nvim-dap-go',
+    'leoluz/nvim-dap-go',
+  },
+  keys = {
+    -- Basic debugging keymaps, feel free to change to your liking!
+    {
+      '<F5>',
+      function()
+        require('dap').continue()
+      end,
+      desc = 'Debug: Start/Continue',
+    },
+    {
+      '<F1>',
+      function()
+        require('dap').step_into()
+      end,
+      desc = 'Debug: Step Into',
+    },
+    {
+      '<F2>',
+      function()
+        require('dap').step_over()
+      end,
+      desc = 'Debug: Step Over',
+    },
+    {
+      '<F3>',
+      function()
+        require('dap').step_out()
+      end,
+      desc = 'Debug: Step Out',
+    },
+    {
+      '<leader>b',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = 'Debug: Toggle Breakpoint',
+    },
+    {
+      '<leader>B',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
+    },
+    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    {
+      '<F7>',
+      function()
+        require('dapui').toggle()
+      end,
+      desc = 'Debug: See last session result.',
+    },
   },
 
   config = function(_, _)
-    local dap = require('dap')
-    local dapui = require('dapui')
+    local dap = require 'dap'
+    local dapui = require 'dapui'
 
     dap.adapters.gdb = {
-      type = "executable",
-      command = "gdb",
-      args = { "-i", "dap" }
+      type = 'executable',
+      command = 'gdb',
+      args = { '-i', 'dap' },
     }
 
     dap.adapters.cppdbg = {
@@ -42,11 +95,10 @@ return {
     }
     dap.defaults.fallback.external_terminal = {
       command = '/usr/bin/kitty',
-      args = { '-e' }
+      args = { '-e' },
     }
 
     -- require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'c', 'cpp' } })
-
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -57,23 +109,23 @@ return {
       icons = { expanded = '', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
-          disconnect = "",
-          pause = " F6",
-          play = " F5",
-          run_last = " F9",
-          step_back = " F4",
-          step_into = " F1",
-          step_out = " F3",
-          step_over = " F2",
-          terminate = " F10"
-        }
+          disconnect = '',
+          pause = ' F6',
+          play = ' F5',
+          run_last = ' F9',
+          step_back = ' F4',
+          step_into = ' F1',
+          step_out = ' F3',
+          step_over = ' F2',
+          terminate = ' F10',
+        },
       },
     }
 
     dap.listeners.after.event_initialized['dapui_config'] = function()
       -- Close Nvim-Tree using api
       -- vim.cmd('NvimTreeClose')
-      vim.cmd('Neotree close')
+      vim.cmd 'Neotree close'
       dapui.open()
     end
     dap.listeners.before.event_terminated['dapui_config'] = function()

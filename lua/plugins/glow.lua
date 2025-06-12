@@ -1,6 +1,6 @@
 return {
-  "ellisonleao/glow.nvim",
+  'ellisonleao/glow.nvim',
   ft = 'markdown',
   config = true,
-  cmd = "Glow"
+  cmd = 'Glow',
 }

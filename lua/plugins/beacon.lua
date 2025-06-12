@@ -1,4 +1,4 @@
 return {
-  "danilamihailov/beacon.nvim",
-  event = "InsertEnter",
+  'danilamihailov/beacon.nvim',
+  event = 'InsertEnter',
 }

@@ -1,6 +1,6 @@
 return {
   languageToolOrg = {
-    username = "",
-    apiKey = ""
-  }
+    username = '',
+    apiKey = '',
+  },
 }

@@ -1,3 +1,0 @@
-return {
-  'kylelaker/riscv.vim',
-}

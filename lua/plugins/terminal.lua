@@ -9,15 +9,15 @@ return {
 
   keys = {
     {
-      "<C-;>",
+      '<C-;>',
       "<cmd> lua require('betterTerm').open() <cr>",
-      mode = { "n", "t" },
-      desc = "Open terminal"
+      mode = { 'n', 't' },
+      desc = 'Open terminal',
     },
     {
-      "<leader>tt",
+      '<leader>tt',
       "<cmd> lua require('betterTerm').select() <cr>",
-      desc = "Select terminal"
+      desc = 'Select terminal',
     },
   },
 }
