@@ -204,33 +204,33 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    local config = {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-    if server_name == 'clangd' then
-      config.cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
-        "--clang-tidy",
-        "--completion-style=bundled",
-        "--cross-file-rename",
-        "--header-insertion=iwyu",
-      }
-      config.init_options = {
-        clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
-        usePlaceholders = true,
-        completeUnimported = true,
-        semanticHighlighting = true,
-      }
-    end
-    require('lspconfig')[server_name].setup(config)
-  end,
-}
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     local config = {
+--       capabilities = capabilities,
+--       on_attach = on_attach,
+--       settings = servers[server_name],
+--       filetypes = (servers[server_name] or {}).filetypes,
+--     }
+--     if server_name == 'clangd' then
+--       config.cmd = {
+--         "clangd",
+--         "--offset-encoding=utf-16",
+--         "--clang-tidy",
+--         "--completion-style=bundled",
+--         "--cross-file-rename",
+--         "--header-insertion=iwyu",
+--       }
+--       config.init_options = {
+--         clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+--         usePlaceholders = true,
+--         completeUnimported = true,
+--         semanticHighlighting = true,
+--       }
+--     end
+--     require('lspconfig')[server_name].setup(config)
+--   end,
+-- }
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
