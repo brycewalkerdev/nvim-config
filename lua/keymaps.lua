@@ -5,6 +5,9 @@ local keymaps = {
   map_basic = function()
     -- Keymaps for better default experience
     -- See `:help vim.keymap.set()`
+    --
+    -- LazyGit
+    vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>", { silent = true })
 
     -- Remap forward in jumplist for compatibility
     vim.keymap.set('n', '<C-e>', '<C-i>', { noremap = true, desc = 'Jump forward in jumplist' })
