@@ -1,3 +1,4 @@
+-- FIXME: I hate having a seperate file for this, I would like to roll it in somewhere reasonable
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
