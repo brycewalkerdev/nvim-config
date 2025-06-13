@@ -256,27 +256,22 @@ return {
         },
 
         ltex = {
-          ltex = {
-            language = 'en-US',
-            checkFrequency = 'save',
-            -- languageToolHttpServerUri = "https://api.languagetoolplus.com/",
-            -- require("creds").languageToolOrg
-          },
-        },
-
-        svlangserver = {
-          cmd = { 'svlangserver' },
-          filetypes = { 'verilog', 'systemverilog' },
-          root_dir = function(fname)
-            return util.root_pattern '.svlangserver'(fname) or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
-          end,
-          single_file_support = true,
-          settings = {
-            systemverilog = {
-              includeIndexing = { '*.{v,vh,sv,svh}', '**/*.{v,vh,sv,svh}' },
+          Settings = {
+            ltex = {
+              -- language = 'en-US',
+              language = 'DE',
+              checkFrequency = 'save',
+              -- languageToolHttpServerUri = "https://api.languagetoolplus.com/",
+              -- require("creds").languageToolOrg
             },
           },
         },
+
+        svlangserver = {},
+        -- veridian = {
+        --   cmd = { 'veridian' },
+        --   filetypes = { 'systemverilog', 'verilog' },
+        -- },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
