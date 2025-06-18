@@ -288,15 +288,20 @@ return {
               includeIndexing = { '**/*.{sv,svh}' },
               excludeIndexing = { 'test/**/*.sv*' },
               defines = {},
-              launchConfiguration = 'verilator -sv -Wall --lint-only',
+              launchConfiguration = 'verilator -sv -Wall --lint-only -"/home/brycewalker/git-wsl/cmv4000-mipi/testbench/uvm_core/src/uvm_pkg.sv"',
               formatCommand = 'verible-verilog-format',
             },
           },
         },
-        -- veridian = {
-        --   cmd = { 'veridian' },
-        --   filetypes = { 'systemverilog', 'verilog' },
+        -- svls = {
+        --   root_dir = function(fname)
+        --     return require('lspconfig.util').find_git_ancestor(fname)
+        --     -- vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        --   end,
+        --   cmd = { 'svls' },
+        --   filetypes = { 'verilog', 'systemverilog' },
         -- },
+        verible = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
