@@ -288,11 +288,12 @@ return {
               includeIndexing = { '**/*.{sv,svh}' },
               excludeIndexing = { 'test/**/*.sv*' },
               defines = {},
-              launchConfiguration = 'verilator -sv -Wall --lint-only -"/home/brycewalker/git-wsl/cmv4000-mipi/testbench/uvm_core/src/uvm_pkg.sv"',
+              launchConfiguration = 'verilator verilator.vlt -f files.f -sv -Wall --lint-only',
               formatCommand = 'verible-verilog-format',
             },
           },
         },
+
         -- svls = {
         --   root_dir = function(fname)
         --     return require('lspconfig.util').find_git_ancestor(fname)
@@ -301,7 +302,7 @@ return {
         --   cmd = { 'svls' },
         --   filetypes = { 'verilog', 'systemverilog' },
         -- },
-        verible = {},
+        -- verible = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
