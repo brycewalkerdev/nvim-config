@@ -289,7 +289,7 @@ return {
               excludeIndexing = { 'test/**/*.sv*' },
               defines = {},
               launchConfiguration = 'verilator verilator.vlt -f files.f -sv -Wall --lint-only',
-              formatCommand = 'verible-verilog-format',
+              formatCommand = 'verible-verilog-format --column_limit 100 --indentation_spaces 4 --wrap_spaces 4 --port_declarations_alignment align',
             },
           },
         },
