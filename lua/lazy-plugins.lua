@@ -57,6 +57,8 @@ require('lazy').setup({
   require 'plugins/fugitive',
   require 'plugins/diffview',
   require 'plugins/log-highlight',
+  require 'plugins/distant',
+  require 'plugins/format',
   require 'plugins/dev-container',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
