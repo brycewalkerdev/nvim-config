@@ -1,23 +1,36 @@
 return {
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     config = function()
-      require('conform').setup {
+      local util = require("conform.util")
+
+      require("conform").setup({
         formatters_by_ft = {
-          -- lua = { 'stylua' },
-          -- Conform will run multiple formatters sequentially
-          python = { 'black' },
-          -- You can customize some of the format options for the filetype (:help conform.format)
-          -- rust = { 'rustfmt', lsp_format = 'fallback' },
-          -- Conform will run the first available formatter
-          -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+          python = { "black" },
+          vhdl   = { "vsg" },
         },
         format_on_save = {
-          -- These options will be passed to conform.format()
-          timeout_ms = 500,
-          lsp_format = 'fallback',
+          timeout_ms = 8000, -- VSG cold start can be slow
+          lsp_format = "fallback",
         },
-      }
+        formatters = {
+          vsg = {
+            command = "vsg",
+            stdin = false, -- don't pipe; VSG wants a filename
+            -- IMPORTANT: pass the filename explicitly
+            args = { "--fix", "-f", "$FILENAME" },
+            -- helps some tools key off extension
+            tempfile_postfix = ".vhd",
+            exit_codes = { 0, 1 }, -- <- accept "violations found" as OK
+            -- (optional) run from project root if you keep .vsg.json there
+            cwd = util.root_file({ ".vsg.json", ".vsg.yaml", ".git" }),
+            meta = {
+              url = "https://github.com/jeremiah-c-leary/vhdl-style-guide",
+              description = "VHDL Style Guide (VSG) formatter",
+            },
+          },
+        },
+      })
     end,
   },
 }

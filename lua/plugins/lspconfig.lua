@@ -217,6 +217,8 @@ return {
         },
         asm_lsp = {},
         pyright = {},
+        vhdl_ls = {},
+        -- vhdl_style_guide = {},
         rust_analyzer = {
           ['rust-analyzer'] = {
             procMacro = {
@@ -289,7 +291,8 @@ return {
               excludeIndexing = { 'test/**/*.sv*' },
               defines = {},
               launchConfiguration = 'verilator verilator.vlt -f files.f -sv -Wall --lint-only',
-              formatCommand = 'verible-verilog-format --column_limit 100 --indentation_spaces 4 --wrap_spaces 4 --port_declarations_alignment align',
+              formatCommand =
+              'verible-verilog-format --column_limit 100 --indentation_spaces 4 --wrap_spaces 4 --port_declarations_alignment align',
             },
           },
         },
@@ -340,6 +343,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'rust_hdl',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
