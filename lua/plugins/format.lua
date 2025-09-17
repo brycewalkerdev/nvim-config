@@ -6,8 +6,10 @@ return {
 
       require("conform").setup({
         formatters_by_ft = {
-          python = { "black" },
-          vhdl   = { "vsg" },
+          python     = { "black" },
+          vhdl       = { "vsg" },
+          javascript = { { "prettierd", "prettier" } },
+          typescript = { { "prettierd", "prettier" } },
         },
         format_on_save = {
           timeout_ms = 8000, -- VSG cold start can be slow

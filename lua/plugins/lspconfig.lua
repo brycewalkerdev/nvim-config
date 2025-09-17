@@ -217,7 +217,10 @@ return {
         },
         asm_lsp = {},
         pyright = {},
+        arduino_language_server = {},
         vhdl_ls = {},
+        ts_ls = {},
+        svelte = {},
         -- vhdl_style_guide = {},
         rust_analyzer = {
           ['rust-analyzer'] = {
@@ -274,6 +277,17 @@ return {
         },
 
         ltex = {
+          filetypes = {
+            'markdown',
+            'tex',
+            'plaintex',
+            'bib',
+            'rmd',
+            'quarto',
+            'gitcommit',
+            'text',
+            -- 'json',
+          },
           settings = {
             ltex = {
               language = 'en-US',
