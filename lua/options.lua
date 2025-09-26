@@ -4,6 +4,11 @@
 --  For more options, you can see `:help option-list`
 --
 -- INFO: Added from previous config
+--
+
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
 vim.o.laststatus = 3 -- For horizontal split border
 
 vim.o.tabstop = 2

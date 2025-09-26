@@ -28,8 +28,8 @@ require('lazy').setup({
   require 'plugins/telescope',
   require 'plugins/lspconfig',
   require 'plugins/conform',
-  -- require 'plugins/blink-cmp',
-  require 'plugins/nvim-cmp',
+  require 'plugins/blink-cmp',
+  -- require 'plugins/nvim-cmp',
   require 'plugins/todo-comments',
   require 'plugins/mini',
   require 'plugins/treesitter',
@@ -59,7 +59,9 @@ require('lazy').setup({
   require 'plugins/log-highlight',
   require 'plugins/distant',
   require 'plugins/format',
+  require 'plugins/spelling',
   require 'plugins/dev-container',
+  require 'plugins/paste',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

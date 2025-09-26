@@ -216,7 +216,7 @@ return {
           },
         },
         asm_lsp = {},
-        pyright = {},
+        basedpyright = {},
         arduino_language_server = {},
         vhdl_ls = {},
         ts_ls = {},
