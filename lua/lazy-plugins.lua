@@ -61,6 +61,7 @@ require('lazy').setup({
   require 'plugins/format',
   require 'plugins/spelling',
   require 'plugins/dev-container',
+  require 'plugins/inlays',
   require 'plugins/paste',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the

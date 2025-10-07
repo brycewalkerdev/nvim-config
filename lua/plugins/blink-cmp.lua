@@ -88,7 +88,12 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
+        default = { 'lsp',
+          'path',
+          'snippets',
+          'lazydev',
+          -- 'buffer'
+        },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           lsp = { fallbacks = {} },
