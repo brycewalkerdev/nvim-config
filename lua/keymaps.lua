@@ -1,5 +1,13 @@
 -- [[ Basic Keymaps ]]
+
 --  See `:help vim.keymap.set()`
+--
+-- Spelling
+local function toggle_spell_check()
+  vim.opt.spell = not (vim.opt.spell:get())
+end
+
+vim.keymap.set('n', '<leader>sp', toggle_spell_check, { desc = 'Toggle [S]pell check' })
 
 -- FIXME: Remap forward in jumplist for compatibility, I think nvim-cmp is causing this
 vim.keymap.set('n', '<C-e>', '<C-i>', { noremap = true, desc = 'Jump forward in jumplist' })

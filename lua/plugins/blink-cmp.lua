@@ -92,7 +92,7 @@ return {
           'path',
           'snippets',
           'lazydev',
-          -- 'buffer'
+          'buffer'
         },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
