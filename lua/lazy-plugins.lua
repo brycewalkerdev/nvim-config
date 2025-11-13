@@ -27,7 +27,6 @@ require('lazy').setup({
   require 'plugins/which-key',
   require 'plugins/telescope',
   require 'plugins/lspconfig',
-  require 'plugins/conform',
   require 'plugins/blink-cmp',
   -- require 'plugins/nvim-cmp',
   require 'plugins/todo-comments',

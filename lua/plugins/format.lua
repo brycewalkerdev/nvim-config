@@ -8,29 +8,27 @@ return {
         formatters_by_ft = {
           python     = { "black" },
           vhdl       = { "vsg" },
-          javascript = { { "prettierd", "prettier" } },
-          typescript = { { "prettierd", "prettier" } },
+          javascript = { "prettierd", "prettier" },
+          typescript = { "prettierd", "prettier" },
         },
         format_on_save = {
           timeout_ms = 8000, -- VSG cold start can be slow
           lsp_format = "fallback",
         },
+        -- this replaces the old nested {} behavior
+        stop_after_first = true,
+
         formatters = {
-          -- vsg = {
-          --   command = "vsg",
-          --   stdin = false, -- don't pipe; VSG wants a filename
-          --   -- IMPORTANT: pass the filename explicitly
-          --   args = { "--fix", "-f", "$FILENAME" },
-          --   -- helps some tools key off extension
-          --   tempfile_postfix = ".vhd",
-          --   exit_codes = { 0, 1 }, -- <- accept "violations found" as OK
-          --   -- (optional) run from project root if you keep .vsg.json there
-          --   cwd = util.root_file({ ".vsg.json", ".vsg.yaml", ".git" }),
-          --   meta = {
-          --     url = "https://github.com/jeremiah-c-leary/vhdl-style-guide",
-          --     description = "VHDL Style Guide (VSG) formatter",
-          --   },
-          -- },
+          vsg = {
+            cwd = require("conform.util").root_file({ ".vsg.yaml", ".git" }),
+            command = "vsg",
+            stdin = false,             -- VSG wants filenames
+            args = { "--fix", "-f", "$FILENAME" },
+            tempfile_postfix = ".vhd", -- ensure proper extension
+            exit_codes = { 0, 1 },     -- 1 = violations found
+            -- Optional: run from repo root if you keep .vsg config there
+            -- cwd = require("conform.util").root_file({ ".vsg.json", ".vsg.yaml", ".git" }),
+          },
         },
       })
     end,
