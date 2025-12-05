@@ -13,11 +13,18 @@ require 'options'
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require 'lazy-bootstrap'
+if vim.g.vscode then
+    -- VSCode extension
+else
+    -- ordinary Neovim
+    -- [[ Install `lazy.nvim` plugin manager ]]
+    require 'lazy-bootstrap'
 
--- [[ Configure and install plugins ]]
-require 'lazy-plugins'
+    -- [[ Configure and install plugins ]]
+    require 'lazy-plugins'
+
+end
+
 
 -- require 'setup-nvim-cmp'
 
