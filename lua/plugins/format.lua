@@ -2,9 +2,10 @@ return {
   {
     "stevearc/conform.nvim",
     config = function()
+      local conform = require("conform")
       local util = require("conform.util")
 
-      require("conform").setup({
+      conform.setup({
         formatters_by_ft = {
           python     = { "black" },
           vhdl       = { "vsg" },
@@ -20,17 +21,17 @@ return {
 
         formatters = {
           vsg = {
-            cwd = require("conform.util").root_file({ ".vsg.yaml", ".git" }),
+            cwd = util.root_file({ ".vsg.yaml", ".git" }),
             command = "vsg",
             stdin = false,             -- VSG wants filenames
-            args = { "--fix", "-f", "$FILENAME" },
+            -- use built-in "indent_only" style so case formatting is left alone
+            args = { "--style", "indent_only", "--fix", "-f", "$FILENAME" },
             tempfile_postfix = ".vhd", -- ensure proper extension
             exit_codes = { 0, 1 },     -- 1 = violations found
-            -- Optional: run from repo root if you keep .vsg config there
-            -- cwd = require("conform.util").root_file({ ".vsg.json", ".vsg.yaml", ".git" }),
           },
         },
       })
     end,
   },
 }
+
