@@ -7,6 +7,8 @@ return {
 
       conform.setup({
         formatters_by_ft = {
+          c          = { "clang_format" },
+          cpp        = { "clang_format" },
           python     = { "black" },
           vhdl       = { "vsg" },
           javascript = { "prettierd", "prettier" },
@@ -23,15 +25,17 @@ return {
           vsg = {
             cwd = util.root_file({ ".vsg.yaml", ".git" }),
             command = "vsg",
-            stdin = false,             -- VSG wants filenames
+            stdin = false, -- VSG wants filenames
             -- use built-in "indent_only" style so case formatting is left alone
             args = { "--style", "indent_only", "--fix", "-f", "$FILENAME" },
             tempfile_postfix = ".vhd", -- ensure proper extension
             exit_codes = { 0, 1 },     -- 1 = violations found
+          },
+          clang_format = {
+            prepend_args = { '--style=file', '--fallback-style=LLVM' },
           },
         },
       })
     end,
   },
 }
-

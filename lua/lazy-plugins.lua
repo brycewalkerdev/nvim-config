@@ -63,6 +63,7 @@ require('lazy').setup({
   require 'plugins/inlays',
   require 'plugins/paste',
   require 'plugins/unnest',
+  require 'plugins/treesitter-context',
   require 'plugins/python-indent',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
