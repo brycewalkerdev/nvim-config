@@ -11,6 +11,8 @@ return {
           cpp        = { "clang_format" },
           python     = { "black" },
           vhdl       = { "vsg" },
+          tex        = { "tex-fmt" },
+          latex      = { "tex-fmt" },
           javascript = { "prettierd", "prettier" },
           typescript = { "prettierd", "prettier" },
         },

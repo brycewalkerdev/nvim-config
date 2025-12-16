@@ -1,6 +1,13 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+
+-- Ensure the standard "site" dir is on runtimepath (needed for treesitter parsers)
+local site = vim.fn.stdpath("data") .. "/site"
+if not vim.tbl_contains(vim.opt.rtp:get(), site) then
+  vim.opt.rtp:append(site)
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -14,15 +21,14 @@ require 'options'
 require 'keymaps'
 
 if vim.g.vscode then
-    -- VSCode extension
+  -- VSCode extension
 else
-    -- ordinary Neovim
-    -- [[ Install `lazy.nvim` plugin manager ]]
-    require 'lazy-bootstrap'
+  -- ordinary Neovim
+  -- [[ Install `lazy.nvim` plugin manager ]]
+  require 'lazy-bootstrap'
 
-    -- [[ Configure and install plugins ]]
-    require 'lazy-plugins'
-
+  -- [[ Configure and install plugins ]]
+  require 'lazy-plugins'
 end
 
 
