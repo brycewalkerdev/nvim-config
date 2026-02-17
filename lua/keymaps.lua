@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>sp', toggle_spell_check, { desc = 'Toggle [S]pell c
 vim.keymap.set({ 'n', 'v' }, '+', '"+y', { desc = 'Yank to system clipboard (Ctrl+Shift+C)' })
 
 -- FIXME: Remap forward in jumplist for compatibility, I think nvim-cmp is causing this
--- vim.keymap.set('n', '<C-e>', '<C-i>', { noremap = true, desc = 'Jump forward in jumplist' })
+vim.keymap.set('n', '<C-e>', '<C-i>', { noremap = true, desc = 'Jump forward in jumplist' })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`

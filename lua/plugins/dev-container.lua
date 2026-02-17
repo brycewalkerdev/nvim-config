@@ -1,26 +1,20 @@
 return {
-  "arnaupv/nvim-devcontainer-cli",
-  opts = {
-    -- By default, if no extra config is added, following nvim_dotfiles are
-    -- installed: "https://github.com/LazyVim/starter"
-    -- This is an example for configuring other nvim_dotfiles inside the docker container
-    nvim_dotfiles_repo = "https://github.com/arnaupv/dotfiles.git",
-    nvim_dotfiles_install_command = "cd ~/nvim_dotfiles/ && ./install.sh",
-    -- In case you want to change the way the devenvironment is setup, you can also provide your own setup
-    setup_environment_repo = "https://github.com/arnaupv/setup-environment",
-    setup_environment_install_command = "./install.sh -p 'nvim stow zsh'",
-  },
-  keys = {
-    -- stylua: ignore
-    {
-      "<leader>cdu",
-      ":DevcontainerUp<cr>",
-      desc = "Up the DevContainer",
-    },
-    {
-      "<leader>cdc",
-      ":DevcontainerConnect<cr>",
-      desc = "Connect to DevContainer",
-    },
-  }
+  "erichlf/devcontainer-cli.nvim",
+  dependencies = { "akinsho/toggleterm.nvim" },
+  init = function()
+    require("devcontainer-cli").setup({
+      -- only the most useful options shown; see full config below
+      interactive = false,
+      toplevel = true,
+      remove_existing_container = true,
+      dotfiles_repository = "https://github.com/erichlf/dotfiles.git",
+      dotfiles_branch = "devcontainer-cli",
+      dotfiles_targetPath = "~/dotfiles",
+      dotfiles_installCommand = "install.sh",
+      shell = "bash",
+      nvim_binary = "nvim",
+      log_level = "debug",
+      console_level = "info",
+    })
+  end,
 }
