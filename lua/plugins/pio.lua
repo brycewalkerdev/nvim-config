@@ -8,6 +8,7 @@ return {
   config = function()
     require('platformio').setup {
       lsp = 'clangd', --default: ccls, other option: clangd
+      clangd_source = 'compiledb',
       -- If you pick clangd, it also creates compile_commands.json
     }
   end,

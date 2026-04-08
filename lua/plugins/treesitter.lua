@@ -72,6 +72,9 @@ return {
       },
     },
     config = function(_, opts)
+      -- Reuse bash parser for zsh buffers to avoid parser lookup failures.
+      vim.treesitter.language.register("bash", "zsh")
+
       -- install parsers from custom opts.ensure_installed
       if opts.ensure_installed and #opts.ensure_installed > 0 then
         require("nvim-treesitter").install(opts.ensure_installed)
@@ -131,7 +134,7 @@ return {
 
           if parser_installed then
             -- Start treesitter for this buffer
-            vim.treesitter.start(bufnr, parser_name)
+            pcall(vim.treesitter.start, bufnr, parser_name)
           end
         end,
       })

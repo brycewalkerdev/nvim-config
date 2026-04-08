@@ -336,6 +336,11 @@ return {
           },
         },
       }
+      -- Register per-server overrides before mason auto-enables them.
+      for server_name, config in pairs(servers) do
+        vim.lsp.config(server_name, config)
+      end
+
       ---@type MasonLspconfigSettings
       ---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
@@ -362,12 +367,6 @@ return {
         'clang-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-      -- Installed LSPs are configured and enabled automatically with mason-lspconfig
-      -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
-      for server_name, config in pairs(servers) do
-        vim.lsp.config(server_name, config)
-      end
 
       -- NOTE: Some servers may require an old setup until they are updated. For the full list refer here: https://github.com/neovim/nvim-lspconfig/issues/3705
       -- These servers will have to be manually set up with require("lspconfig").server_name.setup{}
